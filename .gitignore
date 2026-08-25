@@ -21,3 +21,19 @@ ENV/
 # Temporary / OS
 .DS_Store
 Thumbs.db
+
+# Project context and archive files
+00_MASTER_CONTEXT.md
+01_requirements.md
+02_architecture_workflow.md
+03_design_system.md
+04_guardrails.md
+05_research_dossier.md
+06_gemini_build_prompt.md
+0*.md
+contxt.txt
+files.zip
+
+# Session handover and agent skill files
+HANDOVER.md
+.agents/
