@@ -6,6 +6,7 @@
 [![PQC Ready](https://img.shields.io/badge/PQC-RFC%209370%20%2F%20FIPS%20203-7c3aed?style=for-the-badge)](https://datatracker.ietf.org/doc/html/rfc9370)
 [![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.14-3776AB?style=for-the-badge&logo=python)](https://python.org)
 [![Tests](https://img.shields.io/badge/Pytest-10%2F10%20Passed%20(100%25)-10b981?style=for-the-badge&logo=pytest)](https://pytest.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-f59e0b?style=for-the-badge)](file:///d:/VPNshit/LICENSE)
 
 An enterprise-grade, fully offline defensive cybersecurity research and forensic audit platform designed to evaluate IPsec VPN tunnels against **NIST SP 800-77 Rev. 1 (June 2020)**, **RFC 8221**, **RFC 8247**, and **RFC 9370 / FIPS 203 (ML-KEM)**. 
 
