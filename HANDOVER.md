@@ -15,6 +15,7 @@ Full pipeline operational and tested (10/10 pytest passing). Self-contained, off
 - Built **FastAPI Backend & REST API** (`server/main.py`) and **High-Density Web UI** (`ui/`) with GSAP numerical count-ups, Lenis smooth scrolling, and live PCAP analysis workbench.
 - Wrote **Dataset README** (`dataset/README.md`) documenting methodology and formal citations on ISCXVPN2016 integrity failures.
 - Built test suite (`tests/`) achieving 10/10 test passes across parser, ML, scorer, and API routes.
+- Initialized Git repository, configured author email `tushardoesstuff@gmail.com`, and pushed the complete codebase to [`https://github.com/Tushar27-git/VPN-Prots.git`](https://github.com/Tushar27-git/VPN-Prots.git) (`main` branch).
 
 ## In flight
 Nothing in flight; complete MVP through v2.0 spec delivered cleanly.
