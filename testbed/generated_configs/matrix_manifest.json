@@ -1,0 +1,74 @@
+[
+  {
+    "suite_id": "pqc_hybrid_quantum_safe",
+    "name": "PQC Hybrid ML-KEM-768 (Quantum Resilient)",
+    "security_tier": "PQC_COMPLIANT",
+    "ike_proposal": "aes256-sha384-ecp384-ke1_mlkem768!",
+    "esp_proposal": "aes256gcm128-sha384-ecp384!",
+    "dh_group": "ML-KEM-768 + ECP-384 (Hybrid RFC 9370)",
+    "pfs": true,
+    "mode": "tunnel",
+    "initiator_conf": "testbed/generated_configs\\initiator\\pqc_hybrid_quantum_safe.conf",
+    "responder_conf": "testbed/generated_configs\\responder\\pqc_hybrid_quantum_safe.conf"
+  },
+  {
+    "suite_id": "nist_approved_aes_gcm_256",
+    "name": "NIST High-Assurance (AES-256-GCM / ECP-384)",
+    "security_tier": "NIST_APPROVED",
+    "ike_proposal": "aes256gcm16-prfsha384-ecp384!",
+    "esp_proposal": "aes256gcm16-ecp384!",
+    "dh_group": "ECP-384 (Group 20)",
+    "pfs": true,
+    "mode": "tunnel",
+    "initiator_conf": "testbed/generated_configs\\initiator\\nist_approved_aes_gcm_256.conf",
+    "responder_conf": "testbed/generated_configs\\responder\\nist_approved_aes_gcm_256.conf"
+  },
+  {
+    "suite_id": "nist_standard_aes_cbc_256",
+    "name": "NIST Standard (AES-256-CBC / HMAC-SHA256 / MODP-2048)",
+    "security_tier": "NIST_APPROVED",
+    "ike_proposal": "aes256-sha256-modp2048!",
+    "esp_proposal": "aes256-sha256-modp2048!",
+    "dh_group": "MODP-2048 (Group 14)",
+    "pfs": true,
+    "mode": "tunnel",
+    "initiator_conf": "testbed/generated_configs\\initiator\\nist_standard_aes_cbc_256.conf",
+    "responder_conf": "testbed/generated_configs\\responder\\nist_standard_aes_cbc_256.conf"
+  },
+  {
+    "suite_id": "legacy_acceptable_aes_128",
+    "name": "Acceptable Legacy (AES-128-CBC / No PFS)",
+    "security_tier": "ACCEPTABLE_LEGACY",
+    "ike_proposal": "aes128-sha256-modp2048!",
+    "esp_proposal": "aes128-sha256!",
+    "dh_group": "MODP-2048 (Group 14, IKE only)",
+    "pfs": false,
+    "mode": "tunnel",
+    "initiator_conf": "testbed/generated_configs\\initiator\\legacy_acceptable_aes_128.conf",
+    "responder_conf": "testbed/generated_configs\\responder\\legacy_acceptable_aes_128.conf"
+  },
+  {
+    "suite_id": "insecure_deprecated_3des_md5",
+    "name": "Deprecated & Insecure (3DES / HMAC-MD5 / MODP-1024)",
+    "security_tier": "INSECURE_DEPRECATED",
+    "ike_proposal": "3des-md5-modp1024!",
+    "esp_proposal": "3des-md5!",
+    "dh_group": "MODP-1024 (Group 2, Deprecated)",
+    "pfs": false,
+    "mode": "tunnel",
+    "initiator_conf": "testbed/generated_configs\\initiator\\insecure_deprecated_3des_md5.conf",
+    "responder_conf": "testbed/generated_configs\\responder\\insecure_deprecated_3des_md5.conf"
+  },
+  {
+    "suite_id": "transport_mode_aes_gcm",
+    "name": "Transport Mode Host-to-Host (AES-128-GCM / ECP-256)",
+    "security_tier": "NIST_APPROVED",
+    "ike_proposal": "aes128gcm16-prfsha256-ecp256!",
+    "esp_proposal": "aes128gcm16-ecp256!",
+    "dh_group": "ECP-256 (Group 19)",
+    "pfs": true,
+    "mode": "transport",
+    "initiator_conf": "testbed/generated_configs\\initiator\\transport_mode_aes_gcm.conf",
+    "responder_conf": "testbed/generated_configs\\responder\\transport_mode_aes_gcm.conf"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "filename": "sample_transport_mode_whatsapp.pcap",
+  "filepath": "dataset/samples\\sample_transport_mode_whatsapp.pcap",
+  "suite_id": "transport_mode_aes_gcm",
+  "suite_name": "Transport Mode Host-to-Host (AES-128-GCM / ECP-256)",
+  "traffic_type": "WhatsApp",
+  "packet_count": 11,
+  "esp_packet_count": 7,
+  "ike_version": 2,
+  "is_pqc": false,
+  "security_tier": "NIST_APPROVED",
+  "nist_status": "NIST SP 800-77 Rev. 1 Approved (Host Security)",
+  "dh_group": "ECP-256 (Group 19)",
+  "mode": "transport",
+  "pfs": true
+}

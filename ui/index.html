@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antigravity // IPsec VPN Protocol Analyzer & Forensic Security Framework</title>
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Lenis & GSAP Libraries -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+  <div id="app" class="app-shell">
+
+    <!-- Top Navigation / Status Header -->
+    <header class="top-nav">
+      <div class="nav-brand">
+        <div class="brand-monogram">AG</div>
+        <div class="brand-info">
+          <div class="brand-title">ANTIGRAVITY // IPSEC ANALYZER</div>
+          <div class="brand-sub">PS ID 26160 &bull; NIST SP 800-77 Rev. 1 Forensic Audit</div>
+        </div>
+      </div>
+      <div class="nav-status">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-text">OFFLINE AIR-GAPPED CORE</span>
+        </div>
+        <div class="audit-id-badge" id="currentReportId">AUDIT-IDLE</div>
+      </div>
+    </header>
+
+    <main class="main-container">
+
+      <!-- Workbench Control Bar (Upload & Benchmark Selector) -->
+      <section class="workbench-bar">
+        <div class="workbench-left">
+          <label class="btn btn-primary upload-btn" for="pcapFileInput">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            UPLOAD PCAP / PCAPNG
+            <input type="file" id="pcapFileInput" accept=".pcap,.pcapng,.cap" style="display: none;">
+          </label>
+          <div class="sample-picker-wrapper">
+            <span class="picker-label">BENCHMARK LAB MATRIX:</span>
+            <select id="benchmarkSelector" class="form-select">
+              <option value="" disabled selected>Select pre-configured benchmark capture...</option>
+            </select>
+            <button id="btnLoadBenchmark" class="btn btn-secondary">ANALYZE SAMPLE</button>
+          </div>
+        </div>
+        <div class="workbench-right">
+          <button id="btnViewExecutive" class="btn btn-outline" disabled>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            EXECUTIVE REPORT
+          </button>
+          <button id="btnViewTechnical" class="btn btn-outline" disabled>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            TECHNICAL REPORT
+          </button>
+        </div>
+      </section>
+
+      <!-- Analysis Dashboard Grid -->
+      <div id="dashboardContent" class="dashboard-grid">
+
+        <!-- Top Metric Score Cards -->
+        <div class="metrics-row">
+          
+          <!-- Card 1: Composite Security Score -->
+          <div class="metric-card" id="cardSecurityScore">
+            <div class="metric-label">NIST COMPOSITE SECURITY</div>
+            <div class="metric-value-row">
+              <div class="metric-number" id="numSecurityScore">--</div>
+              <div class="metric-unit">/100</div>
+            </div>
+            <div class="metric-footer">
+              <span class="posture-grade" id="badgeGrade">GRADE: --</span>
+              <span class="posture-label" id="labelPosture">READY</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Overall Risk Score -->
+          <div class="metric-card" id="cardRiskScore">
+            <div class="metric-label">AGGREGATE RISK SEVERITY</div>
+            <div class="metric-value-row">
+              <div class="metric-number metric-risk" id="numRiskScore">--</div>
+              <div class="metric-unit">/100</div>
+            </div>
+            <div class="metric-footer">
+              <span class="risk-pill" id="pillRiskLevel">IDLE</span>
+              <span class="metric-detail" id="txtThreatCount">0 Threats Tagged</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Calibrated ML Confidence -->
+          <div class="metric-card" id="cardMLConfidence">
+            <div class="metric-label">AI CLASSIFICATION CONFIDENCE</div>
+            <div class="metric-value-row">
+              <div class="metric-number metric-ml" id="numConfidence">--</div>
+              <div class="metric-unit">%</div>
+            </div>
+            <div class="metric-footer">
+              <span class="traffic-tag" id="badgeTrafficType">NO FLOW</span>
+              <span class="metric-detail">predict_proba Calibrated</span>
+            </div>
+          </div>
+
+          <!-- Card 4: Quantum Resilience / PQC -->
+          <div class="metric-card" id="cardPQCStatus">
+            <div class="metric-label">POST-QUANTUM RESILIENCE</div>
+            <div class="metric-value-row">
+              <div class="pqc-status-badge" id="badgePQC">UNKNOWN</div>
+            </div>
+            <div class="metric-footer">
+              <span class="metric-detail" id="txtPQCStandard">FIPS 203 / RFC 9370 ML-KEM</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Two-Column Architecture Display: Deterministic vs Statistical ML -->
+        <div class="pillars-row">
+
+          <!-- Pillar 1: Deterministic IKE Protocol Parser (Zero ML) -->
+          <div class="panel pillar-panel">
+            <div class="panel-header">
+              <div class="panel-title-wrapper">
+                <span class="panel-tag tag-deterministic">DETERMINISTIC LAYER &bull; ZERO ML</span>
+                <h3 class="panel-title">IKE Handshake & Cryptographic Forensics</h3>
+              </div>
+              <span class="wire-status">100% WIRE OBSERVABLE</span>
+            </div>
+
+            <div class="panel-body">
+              <table class="kv-table">
+                <tbody>
+                  <tr>
+                    <td class="kv-key">Protocol / Mode</td>
+                    <td class="kv-val" id="valProtoMode">--</td>
+                  </tr>
+                  <tr>
+                    <td class="kv-key">Encryption Algorithm</td>
+                    <td class="kv-val val-highlight" id="valEncryption">--</td>
+                  </tr>
+                  <tr>
+                    <td class="kv-key">Key Exchange / DH Group</td>
+                    <td class="kv-val val-highlight" id="valDHGroup">--</td>
+                  </tr>
+                  <tr>
+                    <td class="kv-key">Integrity / PRF Suite</td>
+                    <td class="kv-val" id="valIntegrityPRF">--</td>
+                  </tr>
+                  <tr>
+                    <td class="kv-key">Perfect Forward Secrecy</td>
+                    <td class="kv-val" id="valPFS">--</td>
+                  </tr>
+                  <tr>
+                    <td class="kv-key">Implementation Fingerprint</td>
+                    <td class="kv-val" id="valVendorFingerprint">--</td>
+                  </tr>
+                  <tr>
+                    <td class="kv-key">Transform Ordering (TOS)</td>
+                    <td class="kv-val val-mono" id="valTOS">--</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- 6-Dimension Score Breakdown Bars -->
+              <div class="sub-section-title">6-DIMENSION COMPLIANCE BREAKDOWN (NIST SP 800-77r1)</div>
+              <div class="dim-bars-container" id="dimBarsContainer">
+                <!-- Injected dynamically by app.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 2: Statistical ML Flow Classifier (Encrypted ESP) -->
+          <div class="panel pillar-panel">
+            <div class="panel-header">
+              <div class="panel-title-wrapper">
+                <span class="panel-tag tag-statistical">STATISTICAL ML LAYER &bull; ENCRYPTED ESP</span>
+                <h3 class="panel-title">Encrypted Traffic Inference & Feature Radar</h3>
+              </div>
+              <span class="wire-status">ZERO PAYLOAD ACCESS</span>
+            </div>
+
+            <div class="panel-body">
+              <div class="ml-hero-box">
+                <div class="ml-hero-top">
+                  <div class="ml-hero-label">INFERRED APPLICATION TRAFFIC:</div>
+                  <div class="ml-hero-class" id="mlInferredClass">--</div>
+                </div>
+                <div class="ml-hero-desc" id="mlInferredDesc">
+                  Evaluating packet length distributions, inter-arrival timing (IAT), and burst dynamics.
+                </div>
+              </div>
+
+              <!-- Probability Distribution Bars -->
+              <div class="sub-section-title">CALIBRATED CLASS PROBABILITY SPECTRUM</div>
+              <div class="prob-spectrum" id="probSpectrumContainer">
+                <!-- Dynamically injected -->
+              </div>
+
+              <!-- Extracted Flow Features Grid -->
+              <div class="sub-section-title">EXTRACTED ESP FLOW METRICS (Leroux et al. 2018)</div>
+              <div class="features-chip-grid" id="flowFeaturesGrid">
+                <!-- Dynamically injected -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Threat & Vulnerability Matrix Section -->
+        <div class="panel threat-panel">
+          <div class="panel-header">
+            <div class="panel-title-wrapper">
+              <span class="panel-tag tag-threats">STANDARDS COMPLIANCE & DEFENSIVE MAPPINGS</span>
+              <h3 class="panel-title">IPsec Vulnerability & Threat Matrix</h3>
+            </div>
+            <div class="threat-filter-controls">
+              <button class="filter-btn active" data-filter="ALL">ALL</button>
+              <button class="filter-btn" data-filter="CRITICAL">CRITICAL</button>
+              <button class="filter-btn" data-filter="HIGH">HIGH</button>
+              <button class="filter-btn" data-filter="MEDIUM">MEDIUM</button>
+              <button class="filter-btn" data-filter="LOW">LOW</button>
+            </div>
+          </div>
+
+          <div class="panel-body no-padding">
+            <table class="threat-table" id="threatTable">
+              <thead>
+                <tr>
+                  <th style="width: 80px;">ID</th>
+                  <th style="width: 90px;">SEVERITY</th>
+                  <th style="width: 240px;">MITRE ATT&CK MAPPING</th>
+                  <th>OBSERVED FINDING & SECURITY IMPACT</th>
+                  <th>ACTIONABLE REMEDIATION</th>
+                </tr>
+              </thead>
+              <tbody id="threatTableBody">
+                <tr>
+                  <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 32px;">
+                    Upload a PCAP capture or select a matrix benchmark above to generate the threat assessment.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- Report Preview & Export Modal -->
+    <div class="modal-overlay" id="reportModal" style="display: none;">
+      <div class="modal-window">
+        <div class="modal-header">
+          <div class="modal-title" id="modalReportTitle">SECURITY AUDIT REPORT</div>
+          <div class="modal-actions">
+            <button class="btn btn-secondary btn-sm" id="btnPrintReport">PRINT / EXPORT PDF</button>
+            <button class="btn btn-outline btn-sm" id="btnCloseModal">CLOSE</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <iframe id="reportFrame" class="report-iframe" src="about:blank"></iframe>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

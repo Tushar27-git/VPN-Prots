@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  initiator:
+    image: strongswan/strongswan:6.0.7
+    container_name: ipsec_initiator
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    volumes:
+      - ./generated_configs/initiator:/etc/swanctl/conf.d
+    networks:
+      vpn_net:
+        ipv4_address: 10.10.0.2
+    command: ["charon-systemd"]
+
+  responder:
+    image: strongswan/strongswan:6.0.7
+    container_name: ipsec_responder
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    volumes:
+      - ./generated_configs/responder:/etc/swanctl/conf.d
+    networks:
+      vpn_net:
+        ipv4_address: 10.10.0.3
+    command: ["charon-systemd"]
+
+networks:
+  vpn_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.0.0/24

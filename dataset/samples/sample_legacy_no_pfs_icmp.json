@@ -1,0 +1,16 @@
+{
+  "filename": "sample_legacy_no_pfs_icmp.pcap",
+  "filepath": "dataset/samples\\sample_legacy_no_pfs_icmp.pcap",
+  "suite_id": "legacy_acceptable_aes_128",
+  "suite_name": "Acceptable Legacy (AES-128-CBC / No PFS)",
+  "traffic_type": "ICMP",
+  "packet_count": 24,
+  "esp_packet_count": 20,
+  "ike_version": 2,
+  "is_pqc": false,
+  "security_tier": "ACCEPTABLE_LEGACY",
+  "nist_status": "NIST SP 800-77 Rev. 1 Acceptable / Missing PFS",
+  "dh_group": "MODP-2048 (Group 14, IKE only)",
+  "mode": "tunnel",
+  "pfs": false
+}

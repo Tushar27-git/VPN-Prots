@@ -1,0 +1,16 @@
+{
+  "filename": "sample_nist_approved_web.pcap",
+  "filepath": "dataset/samples\\sample_nist_approved_web.pcap",
+  "suite_id": "nist_approved_aes_gcm_256",
+  "suite_name": "NIST High-Assurance (AES-256-GCM / ECP-384)",
+  "traffic_type": "Web Browsing",
+  "packet_count": 298,
+  "esp_packet_count": 294,
+  "ike_version": 2,
+  "is_pqc": false,
+  "security_tier": "NIST_APPROVED",
+  "nist_status": "NIST SP 800-77 Rev. 1 Approved",
+  "dh_group": "ECP-384 (Group 20)",
+  "mode": "tunnel",
+  "pfs": true
+}

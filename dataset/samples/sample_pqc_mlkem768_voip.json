@@ -1,0 +1,16 @@
+{
+  "filename": "sample_pqc_mlkem768_voip.pcap",
+  "filepath": "dataset/samples\\sample_pqc_mlkem768_voip.pcap",
+  "suite_id": "pqc_hybrid_quantum_safe",
+  "suite_name": "PQC Hybrid ML-KEM-768 (Quantum Resilient)",
+  "traffic_type": "VoIP",
+  "packet_count": 457,
+  "esp_packet_count": 451,
+  "ike_version": 2,
+  "is_pqc": true,
+  "security_tier": "PQC_COMPLIANT",
+  "nist_status": "FIPS 203 / RFC 9370 (Quantum-Safe Transition)",
+  "dh_group": "ML-KEM-768 + ECP-384 (Hybrid RFC 9370)",
+  "mode": "tunnel",
+  "pfs": true
+}

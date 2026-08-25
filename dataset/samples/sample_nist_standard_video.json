@@ -1,0 +1,16 @@
+{
+  "filename": "sample_nist_standard_video.pcap",
+  "filepath": "dataset/samples\\sample_nist_standard_video.pcap",
+  "suite_id": "nist_standard_aes_cbc_256",
+  "suite_name": "NIST Standard (AES-256-CBC / HMAC-SHA256 / MODP-2048)",
+  "traffic_type": "Video Streaming",
+  "packet_count": 199,
+  "esp_packet_count": 195,
+  "ike_version": 2,
+  "is_pqc": false,
+  "security_tier": "NIST_APPROVED",
+  "nist_status": "NIST SP 800-77 Rev. 1 Approved",
+  "dh_group": "MODP-2048 (Group 14)",
+  "mode": "tunnel",
+  "pfs": true
+}

@@ -1,0 +1,16 @@
+{
+  "filename": "sample_deprecated_3des_email.pcap",
+  "filepath": "dataset/samples\\sample_deprecated_3des_email.pcap",
+  "suite_id": "insecure_deprecated_3des_md5",
+  "suite_name": "Deprecated & Insecure (3DES / HMAC-MD5 / MODP-1024)",
+  "traffic_type": "Email",
+  "packet_count": 68,
+  "esp_packet_count": 64,
+  "ike_version": 2,
+  "is_pqc": false,
+  "security_tier": "INSECURE_DEPRECATED",
+  "nist_status": "NIST SP 800-77 Rev. 1 & RFC 8247 Disallowed",
+  "dh_group": "MODP-1024 (Group 2, Deprecated)",
+  "mode": "tunnel",
+  "pfs": false
+}

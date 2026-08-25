@@ -1,0 +1,108 @@
+---
+name: handover
+description: Write the project's session handover file, replacing it wholesale. Use when a milestone or task completes, when a session is winding down, or when approaching the context budget. Also use to decide whether remaining work should be split across sessions. Trigger this whenever a session needs to hand state to the next one, including when the user only says "wrap up", "we're done for today", or "note where we got to".
+---
+
+# Session handover
+
+The handover file is the next session's onboarding, written by this one. The next
+session starts cold — no memory of this conversation, possibly a different agent,
+possibly a different person. This file is the only thing that carries.
+
+It is read at the start of every session, and on many setups it is loaded
+automatically. That is the whole reason it must stay short. A handover that grows
+into a project history costs context in every future session and defeats its own
+purpose.
+
+## Resolve the setup first
+
+Four things vary by project. Establish them before writing; ask if any is unclear.
+
+- **Where the handover lives.** If one already exists, replace that file, wherever
+  it is. Otherwise follow the project's existing documentation layout — a docs
+  directory if there is one, the project root if not — and name it `HANDOVER.md`.
+- **Whether it auto-loads.** Check the project's agent-instruction file
+  (`CLAUDE.md`, `AGENTS.md`, `.cursor/rules/`, `.github/copilot-instructions.md`,
+  a pinned prompt, a README section — whatever this project uses). If it imports
+  the handover, every line costs context in every future session. If it doesn't,
+  add a one-line pointer there so the next session finds the file at all.
+- **Where history lives.** Version control, if the project has it. Otherwise a
+  changelog, a ticket tracker, or dated notes. You need something to point *at*.
+- **Where durable facts live.** The plan or decision record, the conventions or
+  contributing guide, the issue tracker.
+
+## Rules
+
+**Replace the file. Never append to it.** The handover describes the *current*
+frontier, not the history of the project.
+
+**Hard cap: 120 lines.** If it does not fit, you are including things that belong
+in the permanent documents. Cap lower if this project's agent runs a small context
+window.
+
+**Point, do not summarise.** "Milestone 1 complete, see the log from `v0.1` to
+`HEAD`" beats three paragraphs recounting what was built. The next session can read
+files and history; what it cannot do is know what you were in the middle of.
+
+**Route durable facts to their homes.** If the destination document does not exist
+yet, create it — do not let the handover absorb it.
+
+| Fact | Where it belongs |
+| --- | --- |
+| What changed | Version history, PRs, changelog — link a range, don't restate diffs |
+| Why it was decided | Plan doc, decision record, ADR, or the ticket |
+| How this project does things | Conventions, style guide, or contributing doc |
+| What is true right now, and what to do next | The handover |
+
+## Structure
+
+```markdown
+# Handover — <date>, <what this session did in one line>
+
+## State
+What exists now. Two or three sentences, plus the current unit of work
+(milestone, ticket, sprint goal) and whether it is complete or partial.
+
+## Done this session
+Bullets. What changed and where. Link commits, PRs, or tickets; do not restate
+diffs.
+
+## In flight
+What was underway when the session ended. Be specific: the file, the function,
+the decision half-made. Empty if the session ended cleanly.
+
+## Next
+The single next task, stated concretely enough to start on without re-deriving
+it. Then anything queued behind it, briefly.
+
+## Watch out
+Traps the next session would otherwise walk into: an unverified assumption, a
+failing check, a dependency that resolved oddly, a decision that looked settled
+but is not.
+
+## Read first
+The two or three documents or files that actually matter for the next task.
+```
+
+Drop any section that would be empty. Do not pad.
+
+## Sizing the next session
+
+Before finishing, decide whether the next task fits in one session. Measure it in
+*context windows of the agent that will pick it up*, not absolute token counts —
+those mean different things on different tools.
+
+- **Comfortably inside one window,** with room left for the work itself: take it
+  whole.
+- **Roughly one to two and a half windows:** acceptable only if the task genuinely
+  does not subdivide. Prefer to finish inside that.
+- **More than that:** split it. Break the work into steps that each end at a
+  coherent, committable state, and put the first step in **Next**.
+
+If you cannot estimate tokens, use this proxy: can you name the single commit
+message this next session will end with? If the honest answer is several unrelated
+ones, it is more than one session.
+
+A session that runs out of context mid-task hands over confusion; a session that
+ends at a clean boundary hands over momentum. Splitting is not failure. One
+completed step per session beats three half-done ones.
